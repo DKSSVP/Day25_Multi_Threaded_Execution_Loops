@@ -1,27 +1,69 @@
-Day 25 - Multi-Threaded Execution Loops
-Test Result: PASSED
+DAY 25 - MULTI-THREADED EXECUTION LOOPS
+TEST RESULTS
+
+==================================================
+VERSION 1: SIMULTANEOUS AUDIO AND VIDEO CAPTURE
+==================================================
+
+Status: PASSED
 
 Test Description:
-Simultaneous webcam frame capture and microphone audio capture using separate Python threads.
-
-Test Configuration:
-Camera Index: 0
-Microphone Index: 1
-Audio Sample Rate: 44100 Hz
-Audio Chunk Size: 1024
+Tested simultaneous webcam frame capture and microphone audio
+capture using separate Python threads and queues.
 
 Test Results:
-Processed Video Frames: 4963
-Processed Audio Chunks: 7682
-Remaining Video Queue: 0
-Remaining Audio Queue: 0
+- Processed video frames: 745
+- Processed audio chunks: 947
+- Remaining video queue: 0
+- Remaining audio queue: 0
+- Webcam resource released successfully.
+- Microphone resource released successfully.
+- Application stopped successfully.
 
-Observations:
-1. Webcam and microphone capture started successfully.
-2. Both capture threads operated concurrently.
-3. Video frames and audio chunks were processed.
-4. No capture errors or queue-full warnings appeared.
-5. Both devices were released successfully during shutdown.
-6. No audio or video recordings were saved.
+Observation:
+Both capture threads started after device initialization.
+The application processed the captured data without errors
+during the test.
 
-Final Status: PASSED
+==================================================
+VERSION 2: SEPARATE AUDIO AND VIDEO RECORDING
+==================================================
+
+Status: PASSED
+
+Test Description:
+Tested simultaneous webcam video recording and microphone
+audio recording, saving the outputs as separate files.
+
+Test Results:
+- Processed video frames: 159
+- Processed audio chunks: 249
+- Video duration: 5.30 seconds
+- Audio duration: 5.78 seconds
+- Duration difference: 0.48 seconds
+- Video queue remaining: 0
+- Audio queue remaining: 0
+
+Generated Files:
+- output/day25_video.mp4
+- output/day25_audio.wav
+
+File Verification:
+- MP4 video file created successfully.
+- WAV audio file created successfully.
+- Both recording files were verified.
+
+Observation:
+Both capture threads started after device initialization.
+Audio and video recording durations were close, with a
+0.48-second difference. Exact synchronization is not
+guaranteed by the current implementation.
+
+==================================================
+FINAL RESULT
+==================================================
+
+Version 1: PASSED
+Version 2: PASSED
+
+Day 25 implementation and testing completed successfully.
